@@ -1,0 +1,94 @@
+#path 
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# GPG
+export GPG_TTY=$(tty)
+
+# Alias
+
+dockerstop() { docker stop $(docker ps -a -q) }
+dockerrm() { docker rm $(docker ps -a -q) }
+dockerrmi() { docker rmi $(docker images -q) -f }
+dockerclean() { dockerstop; dockerrm; dockerrmi;}
+dockerexec() { docker exec -it $(docker ps -qa -f "name=$1_1") ${2:-bash} }
+
+gitRebaseDevelop() {
+    local current_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+    if [ -z "$current_branch" ]; then
+        echo "This directory is not a Git repository."
+        return 1
+    fi
+
+    local has_changes=0
+    if ! git diff --quiet || ! git diff --staged --quiet; then
+        has_changes=1
+    fi
+
+    if [ "$has_changes" -eq 1 ]; then
+        git add .
+        git commit -m "rebasing"
+    else
+        echo "No uncommitted changes found."
+    fi
+
+    # Proceed with the rest of the operations
+    git checkout develop
+    git pull
+    git checkout "$current_branch"
+    git rebase develop
+
+    # Reset the last commit if there were changes
+    if [ "$has_changes" -eq 1 ]; then
+        git reset HEAD~
+        git add .
+    fi
+}
+
+formatgom() {
+  # Get the list of modified and new .go files from both staged and unstaged changes, excluding mocks
+  local files=()
+  while IFS= read -r file; do
+    files+=("$file")
+  done < <(git diff --name-only --diff-filter=AM HEAD | grep '\.go$' | grep -vE '(^|/)mock_.*\.go$|(^|/).*_mock\.go$')
+  
+  # Check if there are any Go files to process
+  if [[ ${#files[@]} -gt 0 ]]; then
+    echo "Formatting modified Go files with gofumpt..."
+    gofumpt -w "${files[@]}"
+    
+    echo "Running gogroup on each file..."
+    
+    # Find the go.mod file and extract the module path
+    local go_mod_file
+    go_mod_file=$(git rev-parse --show-toplevel 2>/dev/null)/go.mod
+    
+    if [[ ! -f "$go_mod_file" ]]; then
+      # Fallback: look for go.mod in current directory
+      go_mod_file="./go.mod"
+    fi
+    
+    if [[ -f "$go_mod_file" ]]; then
+      local module_path
+      module_path=$(grep -m1 '^module ' "$go_mod_file" | cut -d' ' -f2)
+      
+      if [[ -n "$module_path" ]]; then
+        # Extract organization prefix (e.g., github.com/myorg from github.com/myorg/myproject)
+        local org_prefix
+        org_prefix=$(echo "$module_path" | cut -d'/' -f1,2)
+        
+        echo "Using organization prefix: $org_prefix"
+        for file in "${files[@]}"; do
+          gogroup -order std,other,prefix="$org_prefix" --rewrite "$file"
+        done
+      else
+        echo "Warning: Could not extract module path from go.mod, skipping gogroup"
+      fi
+    else
+      echo "Warning: go.mod file not found, skipping gogroup"
+    fi
+  else
+    echo "No modified Go files found (after excluding mocks)."
+  fi
+}
+
