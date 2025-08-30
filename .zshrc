@@ -18,6 +18,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+# Vim mode
+bindkey -v
+
 # load the theme
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
