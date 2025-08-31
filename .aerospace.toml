@@ -210,6 +210,10 @@ if.app-id = 'com.googlecode.iterm2'
 run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
+if.app-id = 'org.alacritty'
+run = 'move-node-to-workspace T'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.Safari'
 run = 'move-node-to-workspace B'
 
@@ -260,4 +264,12 @@ run = 'move-node-to-workspace D'
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
 run = 'move-node-to-workspace R'
+
+[[on-window-detected]]
+if.app-id = 'com.riotgrames.LeagueofLegends.LeagueClientUx'
+run = 'move-node-to-workspace E'
+
+[[on-window-detected]]
+if.app-id = 'com.riotgrames.LeagueofLegends.LeagueClient'
+run = 'move-node-to-workspace E'
 
