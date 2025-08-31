@@ -20,6 +20,7 @@ stow .
   - Enhanced plugins: syntax highlighting, autosuggestions, completions, and fzf-tab
   - Optimized history settings and completion styles
   - Integration with fzf and zoxide for enhanced navigation
+  - Vi mode with Emacs keybindings for enhanced editing
 
 - **`.zshrc.personal`** - Personal customizations including:
   - Go development environment setup
@@ -28,13 +29,19 @@ stow .
   - Git workflow automation (`gitRebaseDevelop` function)
   - Go code formatting utilities (`formatgom` with gofumpt and gogroup)
 
-## Features
+- **`.p10k.zsh`** - Powerlevel10k theme configuration with:
+  - Lean prompt style with minimal, clean appearance
+  - Left prompt: directory and git status
+  - Right prompt: exit codes, execution time, background jobs, and environment indicators
+  - Transient prompt for cleaner command history
 
-- **Modular Design**: Separates core shell configuration from personal customizations
-- **Plugin Management**: Auto-installs Zinit if not present and loads essential Zsh plugins
-- **Development Tools**: Pre-configured functions for Docker management and Go development
-- **Enhanced Navigation**: Integrates fzf for fuzzy finding and zoxide for smart directory jumping
-- **Git Workflow**: Custom functions to streamline rebasing and code formatting workflows
+### Editor Configuration
+
+- **`.ideavimrc`** - IdeaVim configuration for IntelliJ IDEA with:
+  - Navigation mappings for Go-to definition, implementation, and type declaration
+  - Quick access to recent files, locations, classes, and symbols
+  - Error navigation and method navigation shortcuts
+  - Enhanced vim-like editing experience in JetBrains IDEs
 
 ## Dependencies
 
