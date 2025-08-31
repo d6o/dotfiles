@@ -18,6 +18,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+export EDITOR=vim
+
 # Vim mode
 bindkey -v
 
@@ -50,6 +52,12 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+setopt auto_cd
+setopt extended_glob
+setopt completeinword
+setopt nobeep
+setopt noshwordsplit
+
 
 # Completion settings
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -57,6 +65,9 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:cat:*' fzf-preview 'cat $realpath'
+
+# provide .. as a completion
+zstyle ':completion:*' special-dirs ..
 
 # alias
 alias ls='ls --color'
