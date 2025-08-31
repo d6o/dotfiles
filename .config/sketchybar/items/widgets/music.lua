@@ -157,7 +157,10 @@ end
 local function refresh_once()
 	sbar.exec("/usr/bin/osascript -e '" .. APPLESCRIPT_INFO:gsub("'", [["]]) .. "'", function(meta)
 		if not meta then
-			show_placeholder()
+			-- Hide widget when no data
+			cover:set({ drawing = "off" })
+			title:set({ drawing = "off" })
+			artist:set({ drawing = "off" })
 			return
 		end
 
@@ -169,22 +172,30 @@ local function refresh_once()
 		local ar = lines[2] or ""
 		local st = lines[3] or "not_running"
 
-		-- Update texts (keep widget visible regardless of state)
-		title:set({ label = { string = (t ~= "" and t or "—") } })
-		artist:set({ label = { string = (ar ~= "" and ar or "") } })
+		-- Only show widget if music is playing
+		if st == "playing" and t ~= "" then
+			-- Update texts and show widget
+			title:set({ label = { string = t } })
+			artist:set({ label = { string = (ar ~= "" and ar or "") } })
 
-		-- Try to fetch art; keep previous art on failure
-		sbar.exec("/usr/bin/osascript -e '" .. APPLESCRIPT_ART:gsub("'", [["]]) .. "'", function(ok)
-			if ok and ok:match("ok") then
-				cover:set({
-					background = {
-						height = COVER_SIZE,
-						image = { string = ART_PATH, scale = COVER_SCALE, corner_radius = COVER_RADIUS },
-					},
-				})
-			end
-			ensure_visible()
-		end)
+			-- Try to fetch art; keep previous art on failure
+			sbar.exec("/usr/bin/osascript -e '" .. APPLESCRIPT_ART:gsub("'", [["]]) .. "'", function(ok)
+				if ok and ok:match("ok") then
+					cover:set({
+						background = {
+							height = COVER_SIZE,
+							image = { string = ART_PATH, scale = COVER_SCALE, corner_radius = COVER_RADIUS },
+						},
+					})
+				end
+				ensure_visible()
+			end)
+		else
+			-- Hide widget when not playing or no track info
+			cover:set({ drawing = "off" })
+			title:set({ drawing = "off" })
+			artist:set({ drawing = "off" })
+		end
 	end)
 end
 
