@@ -1,0 +1,9 @@
+\.git
+\.svn
+\.hg
+CVS
+
+# Your custom ignore
+wallpaper
+README.md
+
