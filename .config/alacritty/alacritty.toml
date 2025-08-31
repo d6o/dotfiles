@@ -57,7 +57,7 @@ save_to_clipboard = true
 [window]
 decorations = "buttonless"
 dynamic_title = true
-opacity = 0.92
+opacity = 0.90
 
 [window.padding]
 x = 16
@@ -67,7 +67,8 @@ y = 16
 
 live_config_reload = true
 import = [
-    "~/.config/alacritty/catppuccin-mocha.toml"
+#    "~/.config/alacritty/catppuccin-mocha.toml"
+    "~/.config/alacritty/tokyonight_night.toml"
 ]
 
 [terminal]
