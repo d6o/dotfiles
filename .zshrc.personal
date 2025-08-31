@@ -92,3 +92,7 @@ formatgom() {
   fi
 }
 
+updatedotfiles() {
+  cd ~/dotfiles && git pull && stow -D . && stow .
+}
+
