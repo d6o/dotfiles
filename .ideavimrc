@@ -1,0 +1,20 @@
+nmap g] :action GotoImplementation<CR>
+nmap gd :action GotoDeclaration<CR>
+nmap gD :action GotoTypeDeclaration<CR>
+nmap gi :action GotoImplementation<CR>
+nmap gu :action GotoSuperMethod<CR>
+nmap gt :action GotoTest<CR>
+nmap gb :action Back<CR>
+nmap gf :action Forward<CR>
+
+nmap <leader>e :action RecentFiles<CR>
+nmap <leader>E :action RecentLocations<CR>
+nmap <leader>o :action GotoClass<CR>
+nmap <leader>O :action GotoFile<CR>
+nmap <leader>s :action GotoSymbol<CR>
+nmap <leader>a :action GotoAction<CR>
+
+nmap [e :action GotoPreviousError<CR>
+nmap ]e :action GotoNextError<CR>
+nmap [m :action MethodUp<CR>
+nmap ]m :action MethodDown<CR>
