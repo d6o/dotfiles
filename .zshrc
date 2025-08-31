@@ -18,7 +18,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-export EDITOR=vim
+#NeoVim
+alias vim=nvim
+alias vi=nvim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Vim mode
 bindkey -v
@@ -140,3 +144,27 @@ bindkey -M vicmd '^P' redo                     # Ctrl + P: Redo
 bindkey -M vicmd '^L' clear-screen             # Ctrl + L: Clear terminal screen
 bindkey -M vicmd '^V' edit-command-line        # Ctrl + V: Edit in vim
 
+# tokey Night Theme for FZF
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+  --highlight-line \
+  --info=inline-right \
+  --ansi \
+  --layout=reverse \
+  --border=none \
+  --color=bg+:#283457 \
+  --color=bg:#16161e \
+  --color=border:#27a1b9 \
+  --color=fg:#c0caf5 \
+  --color=gutter:#16161e \
+  --color=header:#ff9e64 \
+  --color=hl+:#2ac3de \
+  --color=hl:#2ac3de \
+  --color=info:#545c7e \
+  --color=marker:#ff007c \
+  --color=pointer:#ff007c \
+  --color=prompt:#2ac3de \
+  --color=query:#c0caf5:regular \
+  --color=scrollbar:#27a1b9 \
+  --color=separator:#ff9e64 \
+  --color=spinner:#ff007c \
+"
