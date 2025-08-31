@@ -18,3 +18,35 @@ nmap [e :action GotoPreviousError<CR>
 nmap ]e :action GotoNextError<CR>
 nmap [m :action MethodUp<CR>
 nmap ]m :action MethodDown<CR>
+
+" Set leader key to space
+let mapleader = " "
+
+" Open file explorer (Ex command) - IdeaVim specific
+nnoremap <leader>pv :action ActivateProjectToolWindow<CR>
+" Alternative if you want the vim-style explorer:
+" nnoremap <leader>pv :Ex<CR>
+
+" Move selected lines down/up in visual mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Center screen after half-page jumps
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Center screen after search navigation
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Paste without yanking (delete to black hole register then paste)
+xnoremap <leader>p "_dP
+
+" Copy to system clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+
+" Search and replace word under cursor
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
