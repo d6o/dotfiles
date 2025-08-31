@@ -69,7 +69,7 @@ local function refresh_chip()
 		if not out or out == "" then
 			return
 		end
-		local temp, condition = out:match("([%+%-]?%d+°C)%s+(.+)")
+		local temp, condition = out:match("([%+%-]?%d+°[CF])%s+(.+)")
 		if not temp or not condition then
 			return
 		end
