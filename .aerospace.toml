@@ -273,3 +273,15 @@ run = 'move-node-to-workspace E'
 if.app-id = 'com.riotgrames.LeagueofLegends.LeagueClient'
 run = 'move-node-to-workspace E'
 
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = 'move-node-to-workspace D'
+
+[[on-window-detected]]
+if.app-id = 'com.epicgames.EpicGamesLauncher'
+run = 'move-node-to-workspace E'
+
+[[on-window-detected]]
+if.app-id = 'com.Apple.finder'
+run = 'move-node-to-workspace F'
+
