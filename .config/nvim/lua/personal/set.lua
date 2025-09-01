@@ -1,4 +1,10 @@
 vim.opt.guicursor = ""
+vim.g.mapleader = " "
+
+vim.opt.cmdheight = 1  -- Only use 1 line for command line
+vim.opt.showmode = false  -- Turn OFF mode display (lualine shows it)
+vim.opt.showcmd = false   -- Turn OFF command display
+vim.opt.ruler = false     -- Turn OFF ruler (lualine shows position)
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -30,4 +36,4 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
-vim.g.mapleader = " "
+vim.opt.confirm = true2
