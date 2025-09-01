@@ -266,11 +266,15 @@ if.app-id = 'com.postmanlabs.mac'
 run = 'move-node-to-workspace R'
 
 [[on-window-detected]]
-if.app-id = 'com.riotgrames.LeagueofLegends.LeagueClientUx'
+if.app-id = 'com.riotgames.LeagueofLegends.LeagueClient'
 run = 'move-node-to-workspace E'
 
 [[on-window-detected]]
-if.app-id = 'com.riotgrames.LeagueofLegends.LeagueClient'
+if.app-id = 'com.riotgames.LeagueofLegends.LeagueClientUx'
+run = 'move-node-to-workspace E'
+
+[[on-window-detected]]
+if.app-id = 'com.riotgames.LeagueofLegends.GameClient'
 run = 'move-node-to-workspace E'
 
 [[on-window-detected]]
