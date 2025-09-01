@@ -258,7 +258,7 @@ if.app-id = 'com.apple.Passwords'
 run = 'move-node-to-workspace V'
 
 [[on-window-detected]]
-if.app-id = 'com.jkiss.dbeaver.core.product'
+if.app-id = 'org.jkiss.dbeaver.core.product'
 run = 'move-node-to-workspace D'
 
 [[on-window-detected]]
