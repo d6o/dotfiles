@@ -61,7 +61,7 @@ opacity = 0.90
 
 [window.padding]
 x = 16
-y = 16
+y = 0
 
 [general]
 
