@@ -4,6 +4,8 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # GPG
 export GPG_TTY=$(tty)
 
+export GITHUB_USER=d6o
+
 # Alias
 
 dockerstop() { docker stop $(docker ps -a -q) }
@@ -94,5 +96,19 @@ formatgom() {
 
 updatedotfiles() {
   cd ~/dotfiles && git pull && stow -D . && stow .
+}
+
+runclip() {
+    echo "📋 Clipboard contents:"
+    echo "---"
+    pbpaste
+    echo "---"
+    echo -n "Execute this? (y/N): "
+    read confirm
+    if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        pbpaste | bash
+    else
+        echo "Cancelled."
+    fi
 }
 

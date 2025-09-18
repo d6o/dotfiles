@@ -18,10 +18,17 @@ sbar.add("event", "aerospace_workspace_change")
 -- Workspace layout configuration
 -- Display mapping: 3 = left monitor, 1 = middle monitor, 2 = right monitor
 -- Each workspace will only appear on its designated monitor's bar
+-- local WORKSPACE_LAYOUT = {
+--	{ display = 1, workspaces = { "1", "2", "3", "4", "5", "6", "7", "8", "9" } }, -- left monitor
+--	{ display = 1, workspaces = { "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P" } }, -- middle monitor
+--	{ display = 1, workspaces = { "A", "S", "D", "F", "G", "M", "N", "Z", "X", "C", "V", "B" } }, -- right monitor
+--	{ display = 1, workspaces = { "A", "S", "D", "F", "G", "M", "N", "Z", "X", "C", "V", "B" } }, -- right monitor
+--
 local WORKSPACE_LAYOUT = {
-	{ display = 1, workspaces = { "1", "2", "3", "4", "5", "6", "7", "8", "9" } }, -- left monitor
-	{ display = 1, workspaces = { "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P" } }, -- middle monitor
-	{ display = 1, workspaces = { "A", "S", "D", "F", "G", "M", "N", "Z", "X", "C", "V", "B" } }, -- right monitor
+	{ display = 1, workspaces = { "1", "2", "A", "B", "I", "M", "N", "O", "P", "Q", "S", "W", "X", "Y", "Z" } }, -- Monitor 1
+	{ display = 2, workspaces = { "3", "4", "5", "6", "E", "F", "G", "U", "V" } }, -- Monitor 2
+	{ display = 3, workspaces = { "7", "8", "C", "D", "R" } }, -- Monitor 3
+	{ display = 4, workspaces = { "9", "0", "T" } }, -- Monitor 4
 }
 
 -- Visual styling constants

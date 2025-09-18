@@ -50,6 +50,7 @@ setopt extended_glob
 setopt completeinword
 setopt nobeep
 setopt noshwordsplit
+setopt hist_reduce_blanks
 
 
 # Completion settings
@@ -158,3 +159,13 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=separator:#ff9e64 \
   --color=spinner:#ff007c \
 "
+
+zshaddhistory() {
+    local cmd="${1%%$'\n'}"
+    
+    [[ -z "$cmd" ]] && return 1
+    
+    print -sr -- "$cmd"
+    return 1
+}
+

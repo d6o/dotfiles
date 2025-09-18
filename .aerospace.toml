@@ -10,7 +10,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 15
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -25,7 +25,7 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+# on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 # SketchyBar integration - notify SketchyBar when workspace changes
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -51,13 +51,47 @@ automatically-unhide-macos-hidden-apps = false
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-    inner.horizontal = 5
-    inner.vertical =   5
-    outer.left =       5
-    outer.bottom =     5
-    outer.top =        5
-    outer.right =      5
+    inner.horizontal = 1
+    inner.vertical =   1
+    outer.left =       2
+    outer.right =      2
+    outer.bottom =     1
+    outer.top =        6
 
+[workspace-to-monitor-force-assignment]
+    1 = 'Built-in Retina Display'
+    2 = 'Built-in Retina Display'
+    3 = 'XZ271U A'
+    4 = 'XZ271U A'
+    5 = 'XZ271U A'
+    6 = 'XZ271U A'
+    7 = 'Sceptre L24 (1)'
+    8 = 'Sceptre L24 (1)'
+    9 = 'Sceptre L24 (2)'
+    0 = 'Sceptre L24 (2)'
+    a = 'Built-in Retina Display'
+    b = 'Built-in Retina Display'
+    c = 'Sceptre L24 (1)'
+    d = 'Sceptre L24 (1)'
+    e = 'XZ271U A'
+    f = 'XZ271U A'
+    g = 'XZ271U A'
+    i = 'Built-in Retina Display'
+    m = 'Built-in Retina Display'
+    n = 'Built-in Retina Display'
+    o = 'Built-in Retina Display'
+    p = 'Built-in Retina Display'
+    q = 'Built-in Retina Display'
+    r = 'Sceptre L24 (1)'
+    s = 'Built-in Retina Display'
+    t = 'Sceptre L24 (2)'
+    u = 'XZ271U A'
+    v = 'XZ271U A'
+    w = 'Built-in Retina Display'
+    x = 'Built-in Retina Display'
+    y = 'Built-in Retina Display'
+    z = 'Built-in Retina Display'
+    
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
@@ -121,6 +155,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-7 = 'workspace 7'
     alt-8 = 'workspace 8'
     alt-9 = 'workspace 9'
+    alt-0 = 'workspace 0'
     alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
     alt-b = 'workspace B'
     alt-c = 'workspace C'
@@ -154,6 +189,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
     alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
     alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
+    alt-shift-0 = ['move-node-to-workspace 0', 'workspace 0']
     alt-shift-a = ['move-node-to-workspace A', 'workspace A']
     alt-shift-b = ['move-node-to-workspace B', 'workspace B']
     alt-shift-c = ['move-node-to-workspace C', 'workspace C']
@@ -176,6 +212,12 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-x = ['move-node-to-workspace X', 'workspace X']
     alt-shift-y = ['move-node-to-workspace Y', 'workspace Y']
     alt-shift-z = ['move-node-to-workspace Z', 'workspace Z']
+
+    alt-cmd-1 = ['move-workspace-to-monitor 1']
+    alt-cmd-2 = ['move-workspace-to-monitor 2']
+    alt-cmd-3 = ['move-workspace-to-monitor 3']
+    alt-cmd-4 = ['move-workspace-to-monitor 4']
+
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
@@ -222,12 +264,8 @@ if.app-id = 'com.anthropic.claudefordesktop'
 run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-run = 'move-node-to-workspace B'
-
-[[on-window-detected]]
 if.app-id = 'com.sublimetext.4'
-run = 'move-node-to-workspace 9'
+run = 'move-node-to-workspace U'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.podcasts'
@@ -288,4 +326,3 @@ run = 'move-node-to-workspace E'
 [[on-window-detected]]
 if.app-id = 'com.Apple.finder'
 run = 'move-node-to-workspace F'
-
